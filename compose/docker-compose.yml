@@ -1,0 +1,36 @@
+version: "3"
+services:
+  web:
+    image: my-php-5.6
+    container_name: php-apache2
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /exinfinite_projs/:/var/www/html/
+  db:
+    image: my-mysql-5.6
+    container_name: mysql-5.6
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=[db password]
+    volumes:
+      - mysql_db:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: myadmin
+    depends_on:
+      - db
+      - web
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - PMA_USER=[db user]
+      - PMA_PASSWORD=[db password]
+volumes:
+  mysql_db:
