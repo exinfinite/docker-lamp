@@ -9,7 +9,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /exinfinite_projs/:/var/www/html/
+      - /[exinfinite_projs]/:/var/www/html/
   db:
     image: my-mysql-5.6
     container_name: mysql-5.6
