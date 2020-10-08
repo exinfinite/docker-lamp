@@ -1,19 +1,27 @@
 # docker-lamp
 
 ## 建構image
-    images/php5.6-apache2/image-build.bat
-    images/mysql5.6/image-build.bat
+    PHP：./images/php5.6-apache2/image-build.bat
+    MySql：./images/mysql5.6/image-build.bat
 
 ## 設定(資料庫及本機對應資料夾)
-    composer/docker-compose.yml
-    替換[db user]、[db password]、[exinfinite_projs]
+    檔案：./composer/docker-compose.yml
+> 替換[db user]、[db password]、[exinfinite_projs]
 
 ## 執行容器
-    composer/lamp-run.bat
+    執行：./composer/lamp-run.bat
 
-## 網址
+## 本機網域(192.168.99.100或docker.local)
     web
-    http(s)://192.168.99.100
+    http(s)://本機網域
 
     phpmyadmin
-    http://192.168.99.100:8080
+    http://本機網域:8080
+
+> **使用docker.local須設定host：**
+>
+> 192.168.99.100　docker.local
+>
+> **本地端憑證設為有效：**
+>
+> 將./images/php5.6-apache2/server.crt，匯入到「受信任的根憑證授權單位」
