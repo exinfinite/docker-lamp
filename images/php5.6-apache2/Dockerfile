@@ -1,5 +1,6 @@
 FROM php:5.6.39-apache
 ENV TZ=Asia/Taipei
+COPY php/php.ini /usr/local/etc/php/
 COPY server.crt /etc/apache2/ssl/server.crt
 COPY server.key /etc/apache2/ssl/server.key
 COPY dev.conf /etc/apache2/sites-enabled/dev.conf
@@ -9,7 +10,7 @@ RUN docker-php-ext-install pdo_mysql mysql mysqli mbstring exif \
     && a2enmod expires \
     && a2enmod ssl
 RUN pecl install apcu-4.0.11 \
-    && docker-php-ext-enable apcu    
+    && docker-php-ext-enable apcu
 RUN docker-php-ext-enable opcache
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
