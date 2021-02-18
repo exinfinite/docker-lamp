@@ -1,6 +1,6 @@
 FROM php:5.6.39-apache
 ENV TZ=Asia/Taipei
-COPY php/php.ini /usr/local/etc/php/
+#COPY php/php.ini /usr/local/etc/php/
 COPY server.crt /etc/apache2/ssl/server.crt
 COPY server.key /etc/apache2/ssl/server.key
 COPY dev.conf /etc/apache2/sites-enabled/dev.conf
